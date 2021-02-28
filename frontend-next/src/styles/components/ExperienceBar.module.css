@@ -18,10 +18,22 @@
   height: 4px;
   border-radius: 4px;
   background: var(--green);
+  box-shadow: 0px 0px 19px 3px rgba(76, 214, 43, 0.94);
+  animation: glowing 4s ease-in-out infinite;
 }
 
 span.currentExperience {
   position: absolute;
   top: 12px;
   transform: translateX(-50%);
+}
+
+@keyframes glowing {
+  0%,
+  100% {
+    box-shadow: 0px 0px 19px 2px rgba(76, 214, 43, 0.94);
+  }
+  50% {
+    box-shadow: 0px 0px 19px 4px rgba(76, 214, 43, 0.94);
+  }
 }

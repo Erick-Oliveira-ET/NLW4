@@ -7,16 +7,16 @@ const Profile = () => {
 
   return (
     <div className={styles.container}>
-      <img
-        src="https://avatars.githubusercontent.com/u/53864964?s=60&v=4"
-        alt="Erick Tomaz"
-      />
-      <div>
-        <strong>Erick Tomaz Oliveira</strong>
-        <p>
-          <img src="icons/level.svg" alt="" /> Level {level}
-        </p>
-      </div>
+      <a href="https://github.com/Erick-Oliveira-ET" target="blanck">
+        <img
+          src="https://avatars.githubusercontent.com/u/53864964?s=60&v=4"
+          alt="Erick Tomaz"
+        />
+        <div>
+          <p>Developed by: </p>
+          <strong>Erick Tomaz Oliveira</strong>
+        </div>
+      </a>
     </div>
   );
 };

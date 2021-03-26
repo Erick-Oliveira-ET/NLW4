@@ -58,7 +58,8 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
   useEffect(() => {
     if (isActive && time > 0) {
       countdownTimeout = setTimeout(() => {
-        setTime(Math.floor((finish - Date.now()) / 1000));
+        const now = Math.floor((finish - Date.now()) / 1000);
+        setTime(now <= 0 ? 0 : now);
       }, 1000);
     } else if (isActive && time === 0) {
       setHasFinished(true);

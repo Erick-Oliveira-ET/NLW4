@@ -80,8 +80,17 @@ export function ChallengesProvider({
   }
 
   function startNewChallenge() {
-    const randomChallengeIndex = Math.floor(Math.random() * challenges.length);
-    const challenge = challenges[randomChallengeIndex];
+    let challenge;
+    if (localStorage.getItem("challenges") != undefined) {
+      challenge = JSON.parse(localStorage.getItem("challenges"));
+      const randomChallengeIndex = Math.floor(Math.random() * challenge.length);
+      challenge = challenge[randomChallengeIndex];
+    } else {
+      const randomChallengeIndex = Math.floor(
+        Math.random() * challenges.length
+      );
+      challenge = challenges[randomChallengeIndex];
+    }
     setActiveChallenge(challenge);
 
     new Audio("/notification.mp3").play();

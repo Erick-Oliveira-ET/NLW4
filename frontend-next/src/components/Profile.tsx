@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { ChallengesContext } from "../contexts/ChallengeContext";
+import { Container } from "../styles/components/Profile";
 import styles from "../styles/components/Profile.module.css";
 
 const Profile = () => {
   const { level } = useContext(ChallengesContext);
 
   return (
-    <div className={styles.container}>
+    <Container>
       <a href="https://github.com/Erick-Oliveira-ET" target="blanck">
         <img
           src="https://avatars.githubusercontent.com/u/53864964?s=60&v=4"
@@ -17,7 +18,7 @@ const Profile = () => {
           <strong>Erick Tomaz Oliveira</strong>
         </div>
       </a>
-    </div>
+    </Container>
   );
 };
 

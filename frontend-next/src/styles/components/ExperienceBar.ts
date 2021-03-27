@@ -1,12 +1,12 @@
 import styled, { keyframes } from "styled-components";
 
-const glowing = keyframes`
+const glowing = (color) => keyframes`
   0%,
     100% {
-      box-shadow: 0px 0px 19px 2px rgba(76, 214, 43, 0.94);
+      box-shadow: 0px 0px 19px 2px ${color};
     }
     50% {
-      box-shadow: 0px 0px 19px 4px rgba(76, 214, 43, 0.94);
+      box-shadow: 0px 0px 19px 4px ${color};
     }
 `;
 
@@ -30,7 +30,8 @@ const ExperienceBarContainer = styled.header`
     border-radius: 4px;
     background-color: ${(props) => props.theme.experience};
     box-shadow: 0px 0px 19px 3px rgba(76, 214, 43, 0.94);
-    animation: ${glowing} 4s ease-in-out infinite;
+    animation: ${(props) => glowing(props.theme.experienceGlowing)} 4s
+      ease-in-out infinite;
   }
 
   span.currentExperience {

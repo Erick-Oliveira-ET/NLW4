@@ -10,8 +10,9 @@ import { ChallengesProvider } from "../contexts/ChallengeContext";
 import { GetServerSideProps } from "next";
 import { CountdownProvider } from "../contexts/CountdownContext";
 import { HomeContainer } from "../styles/pages/Home";
-import { darkTheme } from "../styles/Themes";
+import { darkTheme, lightTheme } from "../styles/Themes";
 import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "../styles/Global";
 
 interface HomeProps {
   level: number;
@@ -22,6 +23,7 @@ interface HomeProps {
 export default function Home(props: HomeProps) {
   return (
     <ThemeProvider theme={darkTheme}>
+      <GlobalStyle />
       <ChallengesProvider
         level={props.level}
         currentExperience={props.currentExperience}

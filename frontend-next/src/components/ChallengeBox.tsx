@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ChallengesContext } from "../contexts/ChallengeContext";
 import { CountdownContext } from "../contexts/CountdownContext";
-import styles from "../styles/components/ChallengeBox.module.css";
+import { ChallengeBoxContainer } from "../styles/components/ChallengeBox";
 
 const ChallengeBox = () => {
   const {
@@ -24,9 +24,9 @@ const ChallengeBox = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <ChallengeBoxContainer>
       {activeChallenge ? (
-        <div className={styles.challengeActive}>
+        <div className="challengeActive">
           <header>Ganhe {activeChallenge.amount} xp</header>
 
           <main>
@@ -39,32 +39,32 @@ const ChallengeBox = () => {
             <button
               type="button"
               onClick={handleChallengeFail}
-              className={styles.challengeFailedButton}
+              className="challengeFailedButton"
             >
               Falhei
             </button>
             <button
               type="button"
               onClick={handleChallengeComplete}
-              className={styles.challengeCompletedButton}
+              className="challengeCompletedButton"
             >
               Completei
             </button>
             <button
               type="button"
               onClick={createChallenge}
-              className={styles.redoChallenge}
+              className="redoChallenge"
             >
               <img
                 src="/icons/sincronize.svg"
-                className={styles.redoChallengeIcon}
+                className="redoChallengeIcon"
                 alt=""
               />
             </button>
           </footer>
         </div>
       ) : (
-        <div className={styles.challengeNotActive}>
+        <div className="challengeNotActive">
           <strong>Finalize um ciclo para receber um desafio.</strong>
           <p>
             <img src="icons/level-up.svg" alt="Level Up" />
@@ -72,7 +72,7 @@ const ChallengeBox = () => {
           </p>
         </div>
       )}
-    </div>
+    </ChallengeBoxContainer>
   );
 };
 

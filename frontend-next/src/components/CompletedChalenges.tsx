@@ -1,25 +1,24 @@
-import styles from "../styles/components/CompletedChalenges.module.css";
-
 import React, { useContext } from "react";
 import { ChallengesContext } from "../contexts/ChallengeContext";
+import { CompletedChallengesContainer } from "../styles/components/CompletedChallenges";
 
 const CompletedChalenges = () => {
   const { challengesCompleted, level } = useContext(ChallengesContext);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.row}>
+    <CompletedChallengesContainer>
+      <div className="row">
         <div>
           <img src="icons/level.svg" alt="" />
           <span>Level</span>
         </div>
         <span>{level}</span>
       </div>
-      <div className={styles.row}>
+      <div className="row">
         <span>Desafios Completos</span>
         <span>{challengesCompleted}</span>
       </div>
-    </div>
+    </CompletedChallengesContainer>
   );
 };
 

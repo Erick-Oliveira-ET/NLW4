@@ -11,6 +11,8 @@ const glowing = (color) => keyframes`
 `;
 
 const ExperienceBarContainer = styled.header`
+  width: 100%;
+  padding-right: 20px;
   margin-bottom: 25px;
 
   display: flex;

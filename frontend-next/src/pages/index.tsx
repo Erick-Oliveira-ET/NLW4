@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import CompletedChalenges from "../components/CompletedChalenges";
 import ExperienceBar from "../components/ExperienceBar";
 import Profile from "../components/Profile";
@@ -11,18 +11,29 @@ import { GetServerSideProps } from "next";
 import { CountdownProvider } from "../contexts/CountdownContext";
 import { HomeContainer } from "../styles/pages/Home";
 import { darkTheme, lightTheme } from "../styles/Themes";
-import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../styles/Global";
+import ThemeTrigger from "../components/ThemeTrigger";
+import {
+  PersonalizedThemeContext,
+  PersonalizedThemeProvider,
+} from "../contexts/PersonalizedThemeContext";
 
 interface HomeProps {
   level: number;
   currentExperience: number;
   challengesCompleted: number;
+  savedTheme: number;
 }
 
 export default function Home(props: HomeProps) {
+  const { currentTheme } = useContext(PersonalizedThemeContext);
+
+  useEffect(() => {
+    console.log(currentTheme);
+  }, [currentTheme]);
+
   return (
-    <ThemeProvider theme={darkTheme}>
+    <PersonalizedThemeProvider savedTheme={props.savedTheme}>
       <GlobalStyle />
       <ChallengesProvider
         level={props.level}
@@ -49,18 +60,24 @@ export default function Home(props: HomeProps) {
           </CountdownProvider>
         </HomeContainer>
       </ChallengesProvider>
-    </ThemeProvider>
+    </PersonalizedThemeProvider>
   );
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { level, currentExperience, challengesCompleted } = ctx.req.cookies;
+  const {
+    level,
+    currentExperience,
+    challengesCompleted,
+    savedTheme,
+  } = ctx.req.cookies;
 
   return {
     props: {
       level: Number(level),
       currentExperience: Number(currentExperience),
       challengesCompleted: Number(challengesCompleted),
+      savedTheme: Number(savedTheme),
     },
   };
 };

@@ -30,6 +30,7 @@ const lightTheme = {
   backgroundCountdown: "#ffffff",
   backgroundChallengeBox: "#ffffff",
   backgroundExperienceBar: "#c7c7c7",
+  modalOpacityBackgroundColor: "rgba(0, 0, 0, 0.5)",
   text: "#4c30ec",
   textHighlight: "#4c30ec",
   title: "#4c30ec",

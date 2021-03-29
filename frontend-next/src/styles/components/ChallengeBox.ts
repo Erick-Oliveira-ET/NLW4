@@ -16,10 +16,22 @@ const ChallengeBoxContainer = styled.div`
   text-align: center;
 
   @media screen and (max-width: 600px) {
-    display: none;
-    padding: 0;
+    position: ${(props) => (props.active ? "fixed" : "")};
+    z-index: ${(props) => (props.active ? 1 : "")};
+
+    display: ${(props) => (props.active ? "flex" : "none")};
+    padding: ${(props) => (props.active ? "2rem 2rem 4rem 2rem" : "0")};
     margin: 0;
-    width: 0;
+    width: ${(props) => (props.active ? "100vw" : 0)};
+    height: ${(props) => (props.active ? "100vh" : 0)};
+
+    .challengeActive main {
+      flex: ${(props) => (props.active ? "" : 2)};
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   .challengeNotActive {

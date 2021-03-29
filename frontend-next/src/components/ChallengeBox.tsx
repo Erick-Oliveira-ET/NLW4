@@ -24,7 +24,7 @@ const ChallengeBox = () => {
   }
 
   return (
-    <ChallengeBoxContainer>
+    <ChallengeBoxContainer active={activeChallenge ? true : false}>
       {activeChallenge ? (
         <div className="challengeActive">
           <header>Ganhe {activeChallenge.amount} xp</header>

@@ -37,7 +37,7 @@ const ThemeTriggerContainer = styled.div`
     left: 0px;
     overflow: hidden;
     opacity: 1;
-    background-color: #fff;
+    background-color: ${(props) => props.theme.backgroundChallengeBox};
     border-radius: 40px;
     transition: 0.2s ease background-color, 0.2s ease opacity;
   }
@@ -54,19 +54,19 @@ const ThemeTriggerContainer = styled.div`
   }
 
   #_1st-toggle-btn span:before {
-    background-color: #fff;
-    transform: translate(-34px, 1px);
+    background-color: ${(props) => props.theme.backgroundChallengeBox};
+    transform: translate(-35px, 1px);
     z-index: 1;
   }
 
   #_1st-toggle-btn span:after {
-    background-color: #000;
-    transform: translate(1px, 1px);
+    background-color: ${(props) => props.theme.text};
+    transform: translate(3px, 2px);
     z-index: 0;
   }
 
   #_1st-toggle-btn input[type="checkbox"]:checked + span {
-    background-color: #000;
+    background-color: ${(props) => props.theme.backgroundChallengeBox};
   }
 
   #_1st-toggle-btn input[type="checkbox"]:active + span {
@@ -74,12 +74,12 @@ const ThemeTriggerContainer = styled.div`
   }
 
   #_1st-toggle-btn input[type="checkbox"]:checked + span:before {
-    background-color: #000;
+    background-color: ${(props) => props.theme.backgroundChallengeBox};
     transform: translate(23px, -3px);
   }
 
   #_1st-toggle-btn input[type="checkbox"]:checked + span:after {
-    background-color: #fff;
+    background-color: ${(props) => props.theme.text};
     transform: translate(29px, 2px);
   }
 `;

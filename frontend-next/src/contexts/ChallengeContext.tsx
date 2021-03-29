@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
-import challenges from "../../challenges.json";
+import defaultChallenges from "../../challenges.json";
 import LevelupModal from "../components/LevelupModal";
 
 interface Challenge {
@@ -16,6 +16,7 @@ interface ChallengeContextData {
   challengesCompleted: number;
   experienceToNextLevel: number;
   activeChallenge: Challenge;
+  challenges: Array<Challenge>;
   levelUp: () => void;
   startNewChallenge: () => void;
   resetChallenge: () => void;
@@ -29,6 +30,7 @@ interface ChallengeProviderProps {
   level?: number;
   currentExperience?: number;
   challengesCompleted?: number;
+  challenges?: Array<Challenge>;
 }
 
 export const ChallengesContext = createContext({} as ChallengeContextData);
@@ -38,6 +40,9 @@ export function ChallengesProvider({
   ...rest
 }: ChallengeProviderProps) {
   const [level, setLevel] = useState(rest.level ?? 1);
+  const [challenges, setChallenges] = useState<Challenge[]>(
+    rest.challenges ?? (defaultChallenges as any)
+  );
   const [currentExperience, setCurrentExperience] = useState(
     rest.currentExperience ?? 0
   );
@@ -130,6 +135,7 @@ export function ChallengesProvider({
         currentExperience,
         challengesCompleted,
         levelUp,
+        challenges,
         startNewChallenge,
         experienceToNextLevel,
         activeChallenge,

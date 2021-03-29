@@ -17,6 +17,7 @@ import {
   PersonalizedThemeContext,
   PersonalizedThemeProvider,
 } from "../contexts/PersonalizedThemeContext";
+import EditChallenges from "../components/EditChallenges";
 
 interface HomeProps {
   level: number;
@@ -57,6 +58,7 @@ export default function Home(props: HomeProps) {
             </section>
           </CountdownProvider>
         </HomeContainer>
+        <EditChallenges />
       </ChallengesProvider>
     </PersonalizedThemeProvider>
   );

@@ -43,4 +43,15 @@ const ExperienceBarContainer = styled.header`
   }
 `;
 
-export { ExperienceBarContainer };
+const ExperienceContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+  }
+`;
+
+export { ExperienceBarContainer, ExperienceContainer };

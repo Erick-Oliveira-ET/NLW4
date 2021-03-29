@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 const ThemeTriggerContainer = styled.div`
+  @media screen and (max-width: 400px) {
+    align-self: flex-end;
+  }
+
   .toggle-btn {
     position: relative;
     width: 58px;

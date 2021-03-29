@@ -9,7 +9,7 @@ import Head from "next/head";
 import { ChallengesProvider } from "../contexts/ChallengeContext";
 import { GetServerSideProps } from "next";
 import { CountdownProvider } from "../contexts/CountdownContext";
-import { HomeContainer } from "../styles/pages/Home";
+import { HomeContainer, MainContainer } from "../styles/pages/Home";
 import { darkTheme, lightTheme } from "../styles/Themes";
 import { GlobalStyle } from "../styles/Global";
 import ThemeTrigger from "../components/ThemeTrigger";
@@ -48,14 +48,12 @@ export default function Home(props: HomeProps) {
 
           <CountdownProvider>
             <section>
-              <div>
+              <MainContainer>
                 <CompletedChalenges />
                 <Countdown />
                 <Profile />
-              </div>
-              <div>
-                <ChallengeBox />
-              </div>
+              </MainContainer>
+              <ChallengeBox />
             </section>
           </CountdownProvider>
         </HomeContainer>

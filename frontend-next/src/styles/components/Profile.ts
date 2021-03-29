@@ -27,6 +27,13 @@ const Container = styled.div`
     font-size: 1rem;
     margin-top: 0.5rem;
   }
+
+  @media screen and (max-width: 700px) {
+    height: 100%;
+
+    display: flex;
+    justify-self: flex-end;
+  }
 `;
 
 export { Container };

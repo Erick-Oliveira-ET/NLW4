@@ -17,6 +17,29 @@ const HomeContainer = styled.div`
     gap: 6.25rem;
     align-content: center;
   }
+
+  @media screen and (max-width: 700px) {
+    flex: 1;
+    section {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 `;
 
-export { HomeContainer };
+const MainContainer = styled.div`
+  padding-top: 20px;
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  > div:nth-child(3) {
+    align-items: flex-end;
+  }
+`;
+
+export { HomeContainer, MainContainer };

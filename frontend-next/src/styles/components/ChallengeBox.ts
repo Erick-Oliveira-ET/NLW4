@@ -15,6 +15,13 @@ const ChallengeBoxContainer = styled.div`
 
   text-align: center;
 
+  @media screen and (max-width: 600px) {
+    display: none;
+    padding: 0;
+    margin: 0;
+    width: 0;
+  }
+
   .challengeNotActive {
     display: flex;
     flex-direction: column;

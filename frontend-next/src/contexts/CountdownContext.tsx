@@ -29,7 +29,6 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
 
   const totalTime = 25 * 60;
   const [time, setTime] = useState(totalTime);
-  const [start, setStart] = useState<number>();
   const [finish, setFinish] = useState<number>();
   const [isActive, setIsActive] = useState(false);
   const [hasFinished, setHasFinished] = useState(false);
@@ -39,8 +38,6 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
 
   function startCoutdown() {
     setIsActive(true);
-    const inicio = Date.now();
-    setStart(inicio);
     setFinish(Date.now() + totalTime * 1000);
 
     setTimeout(() => {

@@ -75,8 +75,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     challenges,
   } = ctx.req.cookies;
 
-  console.log("Context challenges" + ctx.req.cookies.challenges);
-
   challenges = challenges == null ? null : JSON.parse(challenges);
 
   return {

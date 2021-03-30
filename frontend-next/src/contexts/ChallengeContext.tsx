@@ -40,8 +40,6 @@ export function ChallengesProvider({
   children,
   ...rest
 }: ChallengeProviderProps) {
-  console.log("Rest challenges " + rest.challenges);
-
   const [level, setLevel] = useState(rest.level ?? 1);
   const [challenges, setChallenges] = useState<Challenge[]>(
     rest.challenges ?? (defaultChallenges as any)

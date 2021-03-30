@@ -28,12 +28,6 @@ interface HomeProps {
 }
 
 export default function Home(props: HomeProps) {
-  const { currentTheme } = useContext(PersonalizedThemeContext);
-
-  useEffect(() => {
-    console.log(currentTheme);
-  }, [currentTheme]);
-
   return (
     <PersonalizedThemeProvider savedTheme={props.savedTheme}>
       <GlobalStyle />

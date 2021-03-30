@@ -17,9 +17,7 @@ const EditChallenges = () => {
 
   function deleteChallenge(index: number) {
     let tempChallenges = [];
-    console.log(index);
     challenges.forEach((challenge, i) => {
-      console.log(i !== index);
       if (i !== index) {
         tempChallenges.push(challenge);
       }

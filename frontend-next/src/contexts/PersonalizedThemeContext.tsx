@@ -22,10 +22,11 @@ export function PersonalizedThemeProvider({
   ...rest
 }: PersonalizedThemeContextProviderProps) {
   // 1 dark theme, 2 light theme
-  let [currentTheme, setCurrentTheme] = useState<number>(rest.savedTheme ?? 1);
+  let [currentTheme, setCurrentTheme] = useState<number>(
+    rest.savedTheme === undefined ? 1 : rest.savedTheme
+  );
 
   function changeTheme() {
-    console.log(rest.savedTheme);
     setCurrentTheme(currentTheme === 1 ? 2 : 1);
   }
 

@@ -7,10 +7,22 @@ import {
 } from "../styles/components/EditChallenges";
 
 const EditChallenges = () => {
-  const { challenges } = useContext(ChallengesContext);
+  const { challenges, updateChallenges } = useContext(ChallengesContext);
 
   const [clicked, setClick] = useState(false);
   const [page, setPage] = useState(0);
+
+  function deleteChallenge(index: number) {
+    let tempChallenges = [];
+    console.log(index);
+    challenges.forEach((challenge, i) => {
+      console.log(i !== index);
+      if (i !== index) {
+        tempChallenges.push(challenge);
+      }
+    });
+    updateChallenges(tempChallenges);
+  }
 
   return (
     <EditComponentContainer>
@@ -44,6 +56,10 @@ const EditChallenges = () => {
                 onClick={(e) =>
                   setPage(page + 1 === challenges.length ? page : page + 1)
                 }
+              />
+              <img
+                src="icons/trashCan.svg"
+                onClick={(e) => deleteChallenge(page)}
               />
             </footer>
           </MainEditChallengeContainer>

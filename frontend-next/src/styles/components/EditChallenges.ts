@@ -45,16 +45,16 @@ const MainEditChallengeContainer = styled.div`
     img {
       width: 40px;
       height: 40px;
-      color: ${(props) => props.theme.text};
+      margin: 0 20px;
 
       cursor: pointer;
     }
 
     img:first-child {
-      transform: rotateZ(90deg);
+      transform: rotateZ(180deg);
     }
     img:last-child {
-      transform: rotateZ(-90deg);
+      margin: 0;
     }
   }
 `;

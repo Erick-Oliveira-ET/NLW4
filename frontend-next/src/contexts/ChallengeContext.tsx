@@ -4,7 +4,7 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import defaultChallenges from "../../challenges.json";
 import LevelupModal from "../components/LevelupModal";
 
-interface Challenge {
+export interface Challenge {
   type: "body" | "eye";
   description: string;
   amount: number;
@@ -23,6 +23,7 @@ interface ChallengeContextData {
   completeChallenge: () => void;
   closeLevelupModal: () => void;
   createChallenge: () => void;
+  updateChallenges: (updatedChallenges: Challenge[]) => void;
 }
 
 interface ChallengeProviderProps {
@@ -39,6 +40,8 @@ export function ChallengesProvider({
   children,
   ...rest
 }: ChallengeProviderProps) {
+  console.log("Rest challenges " + rest.challenges);
+
   const [level, setLevel] = useState(rest.level ?? 1);
   const [challenges, setChallenges] = useState<Challenge[]>(
     rest.challenges ?? (defaultChallenges as any)
@@ -128,6 +131,14 @@ export function ChallengesProvider({
     setChallengesCompleted(challengesCompleted + 1);
   }
 
+  function updateChallenges(updatedChallenges: Array<Challenge>) {
+    setChallenges(updatedChallenges);
+
+    Cookies.set("challenges", JSON.stringify(updatedChallenges), {
+      expires: 365 * 10,
+    });
+  }
+
   return (
     <ChallengesContext.Provider
       value={{
@@ -143,6 +154,7 @@ export function ChallengesProvider({
         completeChallenge,
         closeLevelupModal,
         createChallenge,
+        updateChallenges,
       }}
     >
       {children}

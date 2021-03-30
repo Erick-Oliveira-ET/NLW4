@@ -6,7 +6,7 @@ import Countdown from "../components/Countdown";
 import ChallengeBox from "../components/ChallengeBox";
 
 import Head from "next/head";
-import { ChallengesProvider } from "../contexts/ChallengeContext";
+import { Challenge, ChallengesProvider } from "../contexts/ChallengeContext";
 import { GetServerSideProps } from "next";
 import { CountdownProvider } from "../contexts/CountdownContext";
 import { HomeContainer, MainContainer } from "../styles/pages/Home";
@@ -24,6 +24,7 @@ interface HomeProps {
   currentExperience: number;
   challengesCompleted: number;
   savedTheme: number;
+  challenges: Array<Challenge>;
 }
 
 export default function Home(props: HomeProps) {
@@ -40,6 +41,7 @@ export default function Home(props: HomeProps) {
         level={props.level}
         currentExperience={props.currentExperience}
         challengesCompleted={props.challengesCompleted}
+        challenges={props.challenges}
       >
         <HomeContainer>
           <Head>
@@ -65,12 +67,17 @@ export default function Home(props: HomeProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const {
+  let {
     level,
     currentExperience,
     challengesCompleted,
     savedTheme,
+    challenges,
   } = ctx.req.cookies;
+
+  console.log("Context challenges" + ctx.req.cookies.challenges);
+
+  challenges = challenges == null ? null : JSON.parse(challenges);
 
   return {
     props: {
@@ -78,6 +85,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       currentExperience: Number(currentExperience),
       challengesCompleted: Number(challengesCompleted),
       savedTheme: Number(savedTheme),
+      challenges,
     },
   };
 };

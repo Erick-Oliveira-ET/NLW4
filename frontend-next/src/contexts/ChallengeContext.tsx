@@ -31,6 +31,7 @@ interface ChallengeProviderProps {
   level?: number;
   currentExperience?: number;
   challengesCompleted?: number;
+  stoppedChallengeIndex?: number;
   challenges?: Array<Challenge>;
 }
 
@@ -50,6 +51,9 @@ export function ChallengesProvider({
   const [challengesCompleted, setChallengesCompleted] = useState(
     rest.challengesCompleted ?? 0
   );
+  const [stoppedIndex, setStoppedIndex] = useState(
+    rest.stoppedChallengeIndex ?? 0
+  );
 
   const [activeChallenge, setActiveChallenge] = useState(null);
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
@@ -68,7 +72,10 @@ export function ChallengesProvider({
     Cookies.set("challengesCompleted", String(challengesCompleted), {
       expires: 365 * 10,
     });
-  }, [level, currentExperience, challengesCompleted]);
+    Cookies.set("stoppedChallengeIndex", String(stoppedIndex), {
+      expires: 365 * 10,
+    });
+  }, [level, currentExperience, challengesCompleted, stoppedIndex]);
 
   function levelUp() {
     setLevel(level + 1);
@@ -89,14 +96,13 @@ export function ChallengesProvider({
     let challenge;
     if (localStorage.getItem("challenges") != undefined) {
       challenge = JSON.parse(localStorage.getItem("challenges"));
-      const randomChallengeIndex = Math.floor(Math.random() * challenge.length);
-      challenge = challenge[randomChallengeIndex];
+      challenge = challenge[stoppedIndex];
+      setStoppedIndex(stoppedIndex + 1);
     } else {
-      const randomChallengeIndex = Math.floor(
-        Math.random() * challenges.length
-      );
-      challenge = challenges[randomChallengeIndex];
+      challenge = challenges[stoppedIndex];
+      setStoppedIndex(stoppedIndex + 1);
     }
+
     setActiveChallenge(challenge);
 
     new Audio("/notification.mp3").play();

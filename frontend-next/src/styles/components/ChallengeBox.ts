@@ -96,7 +96,7 @@ const ChallengeBoxContainer = styled.div`
   .challengeActive footer {
     width: 350px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr) 60px;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 

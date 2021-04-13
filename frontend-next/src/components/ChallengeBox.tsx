@@ -4,12 +4,9 @@ import { CountdownContext } from "../contexts/CountdownContext";
 import { ChallengeBoxContainer } from "../styles/components/ChallengeBox";
 
 const ChallengeBox = () => {
-  const {
-    activeChallenge,
-    resetChallenge,
-    completeChallenge,
-    createChallenge,
-  } = useContext(ChallengesContext);
+  const { activeChallenge, resetChallenge, completeChallenge } = useContext(
+    ChallengesContext
+  );
 
   const { resetCountdown } = useContext(CountdownContext);
 
@@ -49,17 +46,6 @@ const ChallengeBox = () => {
               className="challengeCompletedButton"
             >
               Completei
-            </button>
-            <button
-              type="button"
-              onClick={createChallenge}
-              className="redoChallenge"
-            >
-              <img
-                src="/icons/sincronize.svg"
-                className="redoChallengeIcon"
-                alt=""
-              />
             </button>
           </footer>
         </div>
